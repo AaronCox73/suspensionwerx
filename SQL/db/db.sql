@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS clients;
+CREATE DATABASE clients;
+USE clients;
