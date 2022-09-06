@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql2');
+const inputCheck = require('./utils/inputCheck');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -21,45 +22,88 @@ const db = mysql.createConnection(
     console.log('Connected to the clients database.')
 );
 
-// // get all customers
-// db.query(`SELECT * FROM customers`, (err, rows) => {
-//     console.log(rows);
-// })
+// get all customers
+app.get('/api/customers', (req, res) => {
+    const sql = `SELECT * FROM customers`;
+
+    db.query(sql, (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
+    });
+});
 
 // get one single customer 
-// db.query(`SELECT * FROM customers WHERE id=1`, (err, row) => {
-//     if (err) {
-//         console.log(err);
-//     }
-//     console.log(row);
-// });
+app.get('/api/customers/:id', (req, res) => {
+    const sql = `SELECT * FROM customers WHERE id = ?`;
+    const params = [req.params.id];
 
-//delete a customer
-// db.query(`DELETE FROM customers WHERE id =?`, 1, (err, result) => {
-//     if (err) {
-//         console.log(err);
-//     }
-//     console.log(result);
-// })
-
-// create a customer 
-const sql = `INSERT INTO customers (id, first_name, Last_name)
-values (?,?,?)`;
-const params = [1, 'Marcio', 'Buffolo'];
-
-db.query(sql, params, (err, result) => {
-    if (err) {
-        console.log(err);
-    }
-    console.log(result);
+    db.query(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: row
+        })
+    })
 })
 
-// app.get('/', (req, res) => {
-//     res.json({
-//         message: 'Hello World'
-//     });
-// });
+// DELETE A CUSTOMER
+app.delete('/api/customers/:id', (req, res) => {
+    const sql = `DELETE FROM customers WHERE id = ?`;
+    const params = [req.params.id];
 
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            res.status(400).json({ error: res.message })
+        } else if (!result.affectedRows) {
+            res.json({
+                message: 'Customer not found'
+            })
+        } else {
+            res.json({
+                message: 'deleted',
+                changes: result.affectedRows,
+                id: req.params.id
+            })
+        }
+    })
+})
+
+// Create a candidate
+app.post('/api/customers', ({ body }, res) => {
+    const errors = inputCheck(
+        body,
+        'first_name',
+        'last_name'
+    );
+    if (errors) {
+        res.status(400).json({ error: errors });
+        return;
+    }
+
+    const sql = `INSERT INTO customers (first_name, last_name)
+      VALUES (?,?)`;
+    const params = [body.first_name, body.last_name];
+
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: body
+        });
+    });
+});
 
 
 // Default response for any other request (Not Found)
