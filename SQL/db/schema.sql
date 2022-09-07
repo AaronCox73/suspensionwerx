@@ -3,3 +3,8 @@ CREATE TABLE customers (
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20) NOT NULL
 );
+
+CREATE TABLE manufacturer (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);

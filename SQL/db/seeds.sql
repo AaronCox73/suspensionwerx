@@ -14,3 +14,16 @@ VALUES
     ('Kevin', 'Goff'),
     ('Bevin', 'Johnson'),
     ('Mustafa', 'Sameric'); 
+
+
+    INSERT INTO manufacturer (name)
+    VALUES 
+    ('KTM'),
+    ('BETA'),
+    ('SHERCO'),
+    ('GASGAS'),
+    ('HUSQVARNA'),
+    ('YAMAHA'),
+    ('KAWASAKI'),
+    ('SUZUKI'),
+    ('HONDA')
