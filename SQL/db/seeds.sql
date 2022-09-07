@@ -1,22 +1,4 @@
-INSERT INTO customers (first_name, last_name)
-VALUES
-  ('Ronald', 'Firbank'),
-  ('Virginia', 'Woolf'),
-  ('Piers', 'Gaveston'),
-  ('Charles', 'LeRoi'),
-  ('Katherine', 'Mansfield'),
-  ('Dora', 'Carrington'),
-  ('Edward', 'Bellamy'),
-  ('Montague', 'Summers'),
-  ('Octavia', 'Butler'),
-  ('Unica', 'Zurn'),
-  ('Mitch', 'Johnson'),
-    ('Kevin', 'Goff'),
-    ('Bevin', 'Johnson'),
-    ('Mustafa', 'Sameric'); 
-
-
-    INSERT INTO manufacturer (name)
+   INSERT INTO manufacturer (name)
     VALUES 
     ('KTM'),
     ('BETA'),
@@ -26,4 +8,25 @@ VALUES
     ('YAMAHA'),
     ('KAWASAKI'),
     ('SUZUKI'),
-    ('HONDA')
+    ('HONDA');
+
+
+INSERT INTO customers (first_name, last_name, make_id)
+VALUES
+  ('Ronald', 'Firbank', 1),
+  ('Virginia', 'Woolf', 2),
+  ('Piers', 'Gaveston', 3),
+  ('Charles', 'LeRoi', 4),
+  ('Katherine', 'Mansfield', 5),
+  ('Dora', 'Carrington', 6),
+  ('Edward', 'Bellamy', 7),
+  ('Montague', 'Summers', 8),
+  ('Octavia', 'Butler', 9),
+  ('Unica', 'Zurn', 1),
+  ('Mitch', 'Johnson', 2),
+    ('Kevin', 'Goff', 3),
+    ('Bevin', 'Johnson', 4),
+    ('Mustafa', 'Sameric', 5); 
+
+
+ 
