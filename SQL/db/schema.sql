@@ -1,6 +1,17 @@
+CREATE TABLE valving (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY
+    
+)
+
+
+-- CREATE TABLE suspension (
+--     id INTEGER AUTO_INCREMENT PRIMARY KEY
+--     name VARCHAR(10) NOT NULL
+-- )
+
 CREATE TABLE manufacturer (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL
+    brand_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE customers (

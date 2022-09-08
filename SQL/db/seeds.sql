@@ -1,4 +1,15 @@
-   INSERT INTO manufacturer (name)
+
+
+--  INSERT INTO suspenison (name)
+--    VALUES 
+--    ('KYB'),
+--    ('SACHS'),
+--    ('WP'),
+--    ('SHOWA'),
+--    ('OTHER'),
+
+   
+   INSERT INTO manufacturer (brand_name)
     VALUES 
     ('KTM'),
     ('BETA'),
