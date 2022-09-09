@@ -24,7 +24,9 @@ const db = mysql.createConnection(
 
 // get all customers
 app.get('/api/customers', (req, res) => {
-    const sql = `SELECT * FROM customers`;
+    const sql = `SELECT * FROM customers
+                LEFT JOIN machine
+                ON customers.machines_id = machine.id`;
 
     db.query(sql, (err, rows) => {
         if (err) {
