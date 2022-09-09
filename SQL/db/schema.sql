@@ -1,13 +1,18 @@
-
+-- LEFT JOIN machine ON customers.machines_id = machine.id;
 
 -- CREATE TABLE fork (
---     id INTEGER AUTO_INCREMENT PRIMARY KEY
---     name VARCHAR(10) NOT NULL
+--     id INTEGER AUTO_INCREMENT PRIMARY KEY,
+--     brand VARCHAR(10) NOT NULL,
+--     spring_rate INTEGER,
+--     oil_weight INTEGER NOT NULL,
+--     oil_height INTEGER NOT NULL
 -- )
 
 -- CREATE TABLE shock (
---     id INTEGER AUTO_INCREMENT PRIMARY KEY
---     name VARCHAR(10) NOT NULL
+--     id INTEGER AUTO_INCREMENT PRIMARY KEY,
+--     brand VARCHAR(10) NOT NULL,
+--     spring_rate INTEGER,
+--     sag INTEGER
 -- )
 
 CREATE TABLE machine (
@@ -26,3 +31,4 @@ CREATE TABLE customers (
     CONSTRAINT fk_machine FOREIGN KEY (machine_id) REFERENCES machine(id) ON DELETE SET NULL 
 );
 
+      
