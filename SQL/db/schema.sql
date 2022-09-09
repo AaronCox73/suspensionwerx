@@ -1,24 +1,28 @@
-CREATE TABLE valving (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY
-    
-)
 
 
--- CREATE TABLE suspension (
+-- CREATE TABLE fork (
 --     id INTEGER AUTO_INCREMENT PRIMARY KEY
 --     name VARCHAR(10) NOT NULL
 -- )
 
-CREATE TABLE manufacturer (
+-- CREATE TABLE shock (
+--     id INTEGER AUTO_INCREMENT PRIMARY KEY
+--     name VARCHAR(10) NOT NULL
+-- )
+
+CREATE TABLE machine (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    brand_name VARCHAR(30) NOT NULL
+    make VARCHAR(30) NOT NULL,
+    model VARCHAR(20) NOT NULL,
+    year INTEGER NOT NULL
+
 );
 
 CREATE TABLE customers (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20) NOT NULL,
-    make_id INTEGER,
-    CONSTRAINT fk_make FOREIGN KEY (make_id) REFERENCES manufacturer(id) ON DELETE SET NULL 
+    machine_id INTEGER,
+    CONSTRAINT fk_machine FOREIGN KEY (machine_id) REFERENCES machine(id) ON DELETE SET NULL 
 );
 

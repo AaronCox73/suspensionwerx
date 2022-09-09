@@ -9,20 +9,20 @@
 --    ('OTHER'),
 
    
-   INSERT INTO manufacturer (brand_name)
+   INSERT INTO machine (make, model, year)
     VALUES 
-    ('KTM'),
-    ('BETA'),
-    ('SHERCO'),
-    ('GASGAS'),
-    ('HUSQVARNA'),
-    ('YAMAHA'),
-    ('KAWASAKI'),
-    ('SUZUKI'),
-    ('HONDA');
+    ('KTM', '150xcw', 2022),
+    ('BETA', '390rr', 2020),
+    ('SHERCO', '250sef', 2019),
+    ('GASGAS', 'ex300', 2021),
+    ('HUSQVARNA', 'fe501', 2018),
+    ('YAMAHA', 'wr450f', 2016),
+    ('KAWASAKI', 'kx250f', 2015),
+    ('SUZUKI', 'rmz450', 2014),
+    ('HONDA', 'crf250', 2022);
 
 
-INSERT INTO customers (first_name, last_name, make_id)
+INSERT INTO customers (first_name, last_name, machine_id)
 VALUES
   ('Ronald', 'Firbank', 1),
   ('Virginia', 'Woolf', 2),
