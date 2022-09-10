@@ -22,7 +22,7 @@
     ('HONDA', 'crf250', 2022);
 
 
-INSERT INTO customers (first_name, last_name, machines_id)
+INSERT INTO customers (first_name, last_name, machine_id)
 VALUES
   ('Ronald', 'Firbank', 1),
   ('Virginia', 'Woolf', 2),

@@ -22,11 +22,13 @@ const db = mysql.createConnection(
     console.log('Connected to the clients database.')
 );
 
+//API ROUTES FOR CUSTOMERS
+
 // get all customers
 app.get('/api/customers', (req, res) => {
     const sql = `SELECT * FROM customers
                 LEFT JOIN machine
-                ON customers.machines_id = machine.id`;
+                ON customers.machine_id = machine.id`;
 
     db.query(sql, (err, rows) => {
         if (err) {
@@ -104,6 +106,35 @@ app.post('/api/customers', ({ body }, res) => {
             message: 'success',
             data: body
         });
+    });
+});
+
+// update candidate's machine! 
+app.put('/api/customers/:id', (req, res) => {
+    const errors = inputCheck(req.body, 'machine_id');
+
+    if (errors) {
+        res.status(400).json({ error: errors });
+        return;
+    }
+    const sql = `UPDATE customers SET machine_id = ? 
+                 WHERE id = ?`;
+    const params = [req.body.party_id, req.params.id];
+    db.query(sql, params, (err, result) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            // check if a record was found
+        } else if (!result.affectedRows) {
+            res.json({
+                message: 'Customer not found'
+            });
+        } else {
+            res.json({
+                message: 'success',
+                data: req.body,
+                changes: result.affectedRows
+            });
+        }
     });
 });
 
